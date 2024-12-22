@@ -1,0 +1,91 @@
+{% extends "basic.html" %} {% load static %} 
+{% block <meta> %}
+ <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with me for any inquiries, feedback, or collaboration opportunities. I'm always open to new projects and ideas.">
+  <meta name="keywords" content="Portfolio, Contact, Inquiries, Feedback, Collaboration, Web Developer, Portfolio Hub">
+{% endblock <meta> %}
+{% block title %}
+  Contact Us | Portfolio Hub
+{% endblock title %}
+{% block stylecss %}
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+            integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    />
+{% endblock stylecss %}
+
+ {% block body %}
+    <!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li class="current">Contact</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+<div class="container mt-4 p-2" >
+    <div class="row">
+        <div class="col-md-4"></div>
+
+        <div class="col-md-4">
+            <br>
+            <br>
+            <br>
+            <h3 class="text-white bg-dark text-center p-3">Contact Us</h3>
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    <strong> {{ message }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+            <div class="card p-2">
+
+
+                <form action="/contact" method="post">{% csrf_token %}
+                    <div class="form-group">
+                        <h5>
+                            <span><i class="fa-solid fa-user m-1"></i>  Name:</span>
+                        </h5>
+                        <input type="text" class="form-control mb-2" name="name" placeholder="Full name..." required/>
+                    </div>
+
+                    <div class="form-group">
+                        <h5>
+                            <span><i class="fa-solid fa-envelope m-1"></i>  Email:</span>
+                        </h5>
+                        <input type="email" class="form-control mb-2" value="{{user.email}}" name="email" placeholder="Email address.." required/>
+                    </div>
+
+                    <div class="form-group">
+                        <h5>
+                            <span><i class="fa-solid fa-phone m-1"></i>  Phone No:</span>
+                        </h5>
+                        <input type="number" class="form-control mb-2" name="num" placeholder="Mobile Number" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <h5>
+                            <span><i class="fa-solid fa-bell m-1"></i> How can i help you?</span>
+                        </h5>
+                        <textarea type="text" class="form-control mb-2" name="desc" placeholder="Enter here.." required></textarea>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-dark" type="submit">Submit</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+{% endblock body %}

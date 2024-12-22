@@ -1,0 +1,76 @@
+{% extends "basic.html" %} {% load static %}
+{% block meta %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Log in to Portfolio Hub to access your portfolio, projects, and exclusive features. Stay connected with the developer community and more.">
+  <meta name="keywords" content="Login, Portfolio Hub, Sign In, Account Access, Web Development">
+{% endblock meta %}
+{% block title %}
+  Log In | Portfolio Hub
+{% endblock title %}
+{% block stylecss %}
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+            integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    />
+{% endblock stylecss %} {% block body %}
+<!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li class="current">Login</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+<div class="container mt-4 p-2">
+    <div class="row">
+        <div class="col-md-4"></div>
+
+        <div class="col-md-4">
+            <br>
+            <br>
+            <br>
+            <h3 class="text-white bg-dark text-center p-3">Log in here</h3>
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    <strong> {{ message }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+            <div class="card p-2">
+
+
+                <form action="/auth/login/" method="post">{% csrf_token %}
+                    <div class="form-group">
+                        <h5>
+                            <span><i class="fa-solid fa-envelope"></i> Email:</span>
+                        </h5>
+                        <input type="email" class="form-control mb-2" name="email" placeholder="Email.." required/>
+                    </div>
+
+                    <div class="form-group">
+                        <h5>
+                            <span><i class="fa-solid fa-key"></i> Password:</span>
+                        </h5>
+                        <input type="password" class="form-control mb-2" name="pass" placeholder="Password.."/>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-dark" type="submit">Log in</button>
+                    </div>
+                    <br>
+                    New User? <a href="/auth/signup/">Signup</a>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+{% endblock body %}

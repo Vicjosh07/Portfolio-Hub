@@ -1,0 +1,35 @@
+{% extends "basic.html" %}
+{% load static %}
+
+{% block meta %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Welcome to Portfolio Hub! I am a passionate web developer and aspiring innovator, committed to creating impactful digital solutions. Explore my work and learn more about my journey in technology.">
+  <meta name="keywords" content="Portfolio, Web Developer, Aspiring Innovator, Technology, BSc Computer Science, Digital Solutions">
+{% endblock meta %}
+{% block title %}
+  Home | Portfolio Hub
+{% endblock title %}
+
+
+{% block hero %}
+<!-- Hero Section -->
+<section id="hero" class="hero section dark-background">
+  <img src="{% static 'assets/img/future.jpg' %}" alt="" data-aos="fade-in" class="">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <h2>{% if user.is_authenticated %}
+                {{ user.username }}
+        <p>I'm a <span class="typed" data-typed-items="Developer, Freelancer, Programmer,  Designer"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+            {% else %}
+                <a href="/auth/login/">Login now</a>
+        <p>And Build your <span class="typed" data-typed-items="Resume, Blogs, gigs, Portfolio"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+            {% endif %}</h2>
+
+  </div>
+
+</section><!-- /Hero Section -->
+
+{% endblock hero %}
+
+
