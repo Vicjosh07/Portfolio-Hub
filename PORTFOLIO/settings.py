@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-o9rne8_&b1nnrz$59_3m9p76iz+q*+i2l8h(j1s3j$&1h7^yn4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'portfolio-hub-mp3x.onrender.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -53,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # other middlewares...
 ]
 
 ROOT_URLCONF = 'PORTFOLIO.urls'
