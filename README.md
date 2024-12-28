@@ -24,9 +24,6 @@
 ## Contributing
 Contributions are welcome! If you'd like to improve the app or add features, feel free to submit a pull request or contact the project owner.
 
-## License
-This project is licensed under the MIT License. See the `LICENSE` file for more information.
-
 ## Contact
 For questions or suggestions, please contact:
 - **Email**: victorjosh4me@gmail.com
